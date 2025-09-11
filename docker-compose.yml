@@ -1,0 +1,29 @@
+services:
+  
+  reception-agent:
+    build:
+      context: ./../containers_base/container_base_agent
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./agent:/app/code/agent
+    env_file:
+      - .env
+    restart: unless-stopped
+    command: >
+      sh -c "watchmedo auto-restart --directory=/app/code/agent --patterns='*.py;*.yaml;*.yml' --recursive python /app/code/agent/__main__.py"
+    networks:
+      - reception_network
+
+  ## Build from here https://github.com/a2aproject/a2a-inspector.git
+  a2ainspector:
+    image: a2a-inspector
+    ports:
+      - "6007:8080"
+    networks:
+      - reception_network
+
+networks:
+  reception_network:
+    driver: bridge
