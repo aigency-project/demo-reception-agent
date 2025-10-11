@@ -1,6 +1,8 @@
 services:
   
   reception-agent:
+    depends_on:
+      - phoenix
     build:
       context: ./../containers_base/container_base_agent
       dockerfile: Dockerfile
@@ -21,6 +23,12 @@ services:
     image: a2a-inspector
     ports:
       - "6007:8080"
+    networks:
+      - reception_network
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"
     networks:
       - reception_network
 

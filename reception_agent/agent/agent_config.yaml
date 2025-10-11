@@ -61,3 +61,11 @@ agent:
       tags: [guidance, clarity]
       examples:
         - "Next steps: 1) Share key evidence, 2) Provide timeline, 3) Identify known witnesses."
+
+
+observability:
+  monitoring:
+    phoenix:
+      host: phoenix
+      port: 6006
+      project_name: reception_agent
