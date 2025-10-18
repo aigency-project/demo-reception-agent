@@ -1,8 +1,6 @@
 services:
   
   reception-agent:
-    depends_on:
-      - phoenix
     build:
       context: ./../containers_base/container_base_agent
       dockerfile: Dockerfile
