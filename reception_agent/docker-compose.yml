@@ -23,6 +23,12 @@ services:
       - "6007:8080"
     networks:
       - reception_network
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"
+    networks:
+      - reception_network
 
 networks:
   reception_network:
